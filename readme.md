@@ -24,7 +24,7 @@ To come:
 
 ## Example: ##
 <center>
-<img src="./GatherData/data/pic/backgrounds/wood.JPG" width ="640">
+<img src="./wood.JPG" width ="640">
 
 | angle | orientation | background | project | usability |
 |-------|-------------|------------|---------|-----------|
