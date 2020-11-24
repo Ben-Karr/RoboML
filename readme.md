@@ -1,17 +1,23 @@
-## Project Description: ##
-This project aims to build a __tool that aids kids in building electronic circuits for robotics__. (Arguably) the most important part of teaching kids robotics (or programming / technologie in general) is to let them build their own robots. However, this goes hand in hand with the hardest part of the learning process: debugging. Taking a lot of time to fix a bug in the electronic circuit is extremely frustrating and there is no skill to lean that makes this easyer, other than experience.
+## RoboML ##
 
-This is less of a problem in a classromm situation, where an experienced instructor can take a look at the circuit and identify the problem. But due to the corona situation the idea (and the desire) came, to have a backup solution, when it is not possible to have human help on site.
+A Project to use machine learning algorithms to help debuging robotics circuits. 
+The goal is to predict on images of robotics circuits, using a breadboard \& mircocontroller:
+1. If there is a connection running from the **+** to the **-** pole (on the breadboard).
+    * If there is a connection running from one pin of the microcontroller to the ground (**-** pole).
+2. Find the coordinates where the circuit is broken. 
 
+# Data Set #
+The ML models are (by now) trained on pictures of electronics circuits that use a breadboard, micro:bit and a Dragontail. The pictures are labeld for:
+* __angle__ _if the pictures are taken from a __top__ or a __side__ angle_,
+* __orientation__ _if the micro:bit is on the __left__ or at the __right__ side of the picture_,
+* __group__ _for each setup several photos were taken (different angle/orientation), each setup gets an unique group nuber, to be able to restrict to one photo for each group in training and avoid overfitting_,
+* __background__ _since the all electronic components are relatively similar, the main variance, in inference, is expected to come from the background. The label enables to check for good generalization to different backgrounds._,
+* __project__ _which project is build_
+  * __base__ running a wire from the **+** to the **-** pole,
+  * __led__ drive a led,
+  * to come: projects from the [Teknologieskolen Summer Camp](https://www.teknologiskolen.dk/summer-camp-june-17-19/),
+* __y1, y2, x1, x2__ the coordinates to crop to.
+* __usability__ _if the label is __ok__ it is humanly possible to determine if the circuit is correct or not, if it is __not_ok__ the image is to blurrie or an important part is hidden behind some component, __rmv__ is to be removed from the data set_
 
-## Phases: ##
-* Gather Data:
-  * Record videos of electronic circuits
-  * Label if the circuit is correct or not & where the circuit is broken
-  * Split video in individual pictures
-
-* Build Deep Learning Model:
-  * Try Transfer Learning for ResNet34/50/DenseNet
-  * Try to predict correct vs incorrect and optional position of first error
-
-* Build a Smartphone App (if the DL model works)
+To come:
+* coordinates at which the circuit is broken.
