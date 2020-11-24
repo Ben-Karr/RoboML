@@ -21,3 +21,12 @@ The ML models are (by now) trained on pictures of electronics circuits that use 
 
 To come:
 * coordinates at which the circuit is broken.
+
+## Example: ##
+<center>
+<img src="./GatherData/data/pic/backgrounds/wood.JPG" width ="640">
+
+| angle | orientation | background | project | usability |
+|-------|-------------|------------|---------|-----------|
+| top   | R           | wood       | base    | ok        |
+</center>
